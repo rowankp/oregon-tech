@@ -1,0 +1,21 @@
+Found a statement
+Found '%' when expecting a EXPR in line 2
+Found a statement
+Found ';' when expecting a EXPR in line 4
+Found a statement
+Found 'var' when expecting a ';' in line 7
+Found a statement
+Found 'while' when expecting a EXPR in line 9
+Found a statement
+Found ')' when expecting a EXPR in line 11
+Found a statement
+Found 'y' when expecting a ')' in line 13
+Found a statement
+Found a statement
+Found a statement
+Found 'b' when expecting a '=' in line 20
+Found a statement
+Found a statement
+Found a statement
+Found a statement
+Found a Program

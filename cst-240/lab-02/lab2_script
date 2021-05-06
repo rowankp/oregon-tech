@@ -1,0 +1,86 @@
+#! /bin/bash
+
+# Name: Rowan Parker
+# Course: CST 240 - Linux Programming
+# Assignment/Lab: Lab 2
+# Date: 04/22/2019
+
+# variable to hold test start value
+START=0
+# variable to hold test end value
+END=0
+# variable to hold whether verbose mode has been indicated
+VERBOSE=1
+
+# Name: show_help
+# Purpose: display help message to user and exit the script
+# Precondition: -h has been specified in command line or
+#               START and END have not been given values
+# Postcondition: script exited
+show_help()
+{
+	echo "-h Prints a help/usage message and exits the script."
+	echo "-e <last value> Specifies the ending value for the test."
+	echo "-s <start value> Specifies the starting value for the test."
+	echo "-v Runs the test in verbose mode."
+	exit
+}
+
+# test for valid command line options
+while getopts 'he:s:v' OPTION
+do
+	case "$OPTION" in
+		h) show_help
+		;;
+		e) END=$OPTARG
+		;;
+		s) START=$OPTARG
+		;;
+		v) VERBOSE=0
+	  	;;
+   	esac
+done
+
+# validate command line options
+if [ $START -eq 0 ] && [ $END -eq 0 ] 
+then
+	show_help
+elif [ $START -gt $END ]
+then 
+	END=$START
+elif [ $END -lt $START ]
+then
+	START=$END
+fi
+
+if [ $VERBOSE -eq 0 ]
+then
+	echo "START VALUE: $START"
+	echo "END VALUE: $END"
+fi
+
+for (( i=$START; i<=$END; i++))
+do
+    ./foo $i
+	RETURN=$?
+
+	if [ $VERBOSE -eq 0 ]
+	then
+		echo "VALUE TESTED: $i"
+		echo "RETURN VALUE: $RETURN"
+	fi
+
+	if [ $RETURN -eq 0 ]
+	then
+		echo "Program successful."
+	elif [ $RETURN -eq 1 ] && [ $VERBOSE -eq 0 ] 
+    then
+		echo "Missing command line arguement."
+	elif [ $RETURN -eq 2 ]  && [ $VERBOSE -eq 0 ]
+	then
+		echo "Invalid command line arguement."
+	elif [ $RETURN -eq 3 ]  && [ $VERBOSE -eq 0 ]
+	then
+		echo "Program failed for some other reason."
+	fi
+done

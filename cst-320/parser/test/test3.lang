@@ -1,0 +1,26 @@
+var = 1;
+var = % 3 5;
+var = 2;
+var = + 3 ;
+var = 3;
+var = x
+var = b;
+var = 4;
+var = while;
+var = 5;
+while () var = z;
+var = 6;
+while (x y) while (z) var = 2;
+var = 7;
+while (1)
+[
+    a = 1;
+    [
+        b = 2;
+        b b
+    ]
+    c = 3;
+]
+
+end
+
